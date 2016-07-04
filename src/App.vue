@@ -6,7 +6,7 @@ canvas
 export default {
   ready () {
     this.init()
-    setInterval(this.draw, 30)
+    setInterval(this.draw, 33)
   },
   data () {
     return {
@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     init () {
-      this.width = this.$el.width = document.body.scrollWidth
-      this.height = this.$el.height = document.body.scrollHeight
+      this.width = this.$el.width = document.documentElement.clientWidth
+      this.height = this.$el.height = document.documentElement.clientHeight
       this.context = this.$el.getContext('2d')
       this.unitWidth = parseInt(window.getComputedStyle(this.$el, false)['fontSize'])
       this.initColumnHeight(1)
@@ -54,7 +54,7 @@ export default {
       this.context.fillText(this.randomText(), index * this.unitWidth, this.columnHeight[index] * this.unitWidth)
     },
     shouldReset (index) {
-      return this.columnHeight[index] * this.unitWidth > this.height && Math.random() < 0.01
+      return this.columnHeight[index] * this.unitWidth > this.height && Math.random() < 0.016
     },
     randomText () {
       let num = Math.floor(Math.random() * this.character.length)
@@ -64,8 +64,8 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 canvas
   position: absolute
   left: 0; top: 0
-  font-size: 18px
+  background: #000
