@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     init () {
-      this.width = this.$el.width = document.documentElement.clientWidth
-      this.height = this.$el.height = document.documentElement.clientHeight
+      this.width = this.$el.width = window.screen.width
+      this.height = this.$el.height = window.screen.height
       this.context = this.$el.getContext('2d')
       this.unitWidth = parseInt(window.getComputedStyle(this.$el, false)['fontSize'])
       this.initColumnHeight(1)
