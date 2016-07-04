@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     init () {
-      this.width = this.$el.width = this.$el.offsetWidth
-      this.height = this.$el.height = this.$el.offsetHeight
+      this.width = this.$el.width = document.body.scrollWidth
+      this.height = this.$el.height = document.body.scrollHeight
       this.context = this.$el.getContext('2d')
       this.unitWidth = parseInt(window.getComputedStyle(this.$el, false)['fontSize'])
       this.initColumnHeight(1)
@@ -50,7 +50,7 @@ export default {
     },
     drawColumn (index) {
       this.context.fillStyle = '#0f0'
-      this.context.font = `${this.unitWidth}px`
+      this.context.font = `${this.unitWidth}px arial`
       this.context.fillText(this.randomText(), index * this.unitWidth, this.columnHeight[index] * this.unitWidth)
     },
     shouldReset (index) {
@@ -66,8 +66,6 @@ export default {
 
 <style lang="sass">
 canvas
-  background: #000
   position: absolute
   left: 0; top: 0
-  width: 100%; height: 100%
-  font-size: 12px
+  font-size: 18px
