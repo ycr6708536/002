@@ -7,6 +7,7 @@ export default {
   ready () {
     this.init()
     setInterval(this.draw, 33)
+    window.onresize = this.init
   },
   data () {
     return {
@@ -18,8 +19,8 @@ export default {
   },
   methods: {
     init () {
-      this.width = this.$el.width = window.screen.width
-      this.height = this.$el.height = window.screen.height
+      this.width = this.$el.width = this.$el.offsetWidth
+      this.height = this.$el.height = this.$el.offsetHeight
       this.context = this.$el.getContext('2d')
       this.unitWidth = parseInt(window.getComputedStyle(this.$el, false)['fontSize'])
       this.initColumnHeight(1)
@@ -68,4 +69,5 @@ export default {
 canvas
   position: absolute
   left: 0; top: 0
+  width: 100%; height: 100%
   background: #000
